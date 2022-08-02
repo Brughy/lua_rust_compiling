@@ -2,7 +2,9 @@ extern crate gcc;
 
 #[warn(dead_code)]
 fn main() {
-    gcc::Build::new()
+
+    let mut cfg = gcc::Build::new()
+      //.define("FOO","BAR")
         .file("lua/src/lapi.c")
         .file("lua/src/lauxlib.c")
         .file("lua/src/lbaselib.c")
@@ -39,6 +41,9 @@ fn main() {
         .file("lua/src/lzio.c")
         .include("../lua/src/")
         .flag("-O2")
+      //.flag_if_supported()
         .define("LUA_USE_APICHECK", Some("1"))
         .compile("liblua.a");
+      //.shared_flag(true)
+      //.compile("liblua.so);
 }
