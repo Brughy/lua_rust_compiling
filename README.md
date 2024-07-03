@@ -2,4 +2,5 @@
 
 Package for compile Lua from Cargo
 
-Tu run : ./run.sh
+## Usage
+./run.sh
